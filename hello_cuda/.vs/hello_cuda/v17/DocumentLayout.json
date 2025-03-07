@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dhals_zn0ga5j\\python_seed\\Hello_CUDA\\hello_cuda\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FFA20E9C-C9AE-47DF-A07D-24759EF4B465}|hello_cuda\\hello_cuda.vcxproj|C:\\Users\\dhals_zn0ga5j\\python_seed\\Hello_CUDA\\hello_cuda\\hello_cuda\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{FFA20E9C-C9AE-47DF-A07D-24759EF4B465}|hello_cuda\\hello_cuda.vcxproj|solutionrelative:hello_cuda\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "kernel.cu",
+              "DocumentMoniker": "C:\\Users\\dhals_zn0ga5j\\python_seed\\Hello_CUDA\\hello_cuda\\hello_cuda\\kernel.cu",
+              "RelativeDocumentMoniker": "hello_cuda\\kernel.cu",
+              "ToolTip": "C:\\Users\\dhals_zn0ga5j\\python_seed\\Hello_CUDA\\hello_cuda\\hello_cuda\\kernel.cu",
+              "RelativeToolTip": "hello_cuda\\kernel.cu",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-07T06:21:47.862Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
