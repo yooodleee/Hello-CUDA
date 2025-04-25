@@ -7,7 +7,7 @@
 
 int main(void)
 {
-    int a, *b, *c;
+    int* a, * b, * c;
     int memSize = sizeof(int) * NUM_DATA;
     
     a = new int[NUM_DATA]; memset(a, 0, memSize);
