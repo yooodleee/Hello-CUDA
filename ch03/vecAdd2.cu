@@ -1,5 +1,6 @@
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
+#include "DS_timer.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,6 +20,15 @@ __global__ void vecAdd(int* _a, int* _b, int* _c)
 
 int main(void)
 {
+    // Set timer
+    DS_timer timer(5);
+    timer.setTimerName(0, (char*)"CUDA Total");
+    timer.setTimerName(1, (char*)"Computation(Kernel)");
+    timer.setTimerName(2, (char*)"Data Trans. : Host -> Device");
+    timer.setTimerName(3, (char*)"Data Trans. : Device -> Host");
+    timer.setTimerName(4, (char*)"VecAdd on Host");
+    timer.initTimers();
+
     int* a, * b, * c, * hc;     // Vecs on the host
     int* da, * db, * dc;        // Vecs on the device
 
@@ -39,28 +49,42 @@ int main(void)
     }
 
     // Vec sum on host (for performance comparison)
+    timer.onTimer(4);
     for (int i = 0; i < NUM_DATA; i++)
         hc[i] = a[i] + b[i];
-    
+    timer.offTimer(4);
 
     // Memory allocation on the device-side
     cudaMalloc(&da, memSize); cudaMemset(da, 0, memSize);
     cudaMalloc(&db, memSize); cudaMemset(db, 0, memSize);
     cudaMalloc(&dc, memSize); cudaMemset(dc, 0, memSize);
 
+    timer.onTimer(0);
+
     // Data copy : Host -> Device
+    timer.onTimer(2);
     cudaMemcpy(da, a, memSize, cudaMemcpyHostToDevice);
     cudaMemcpy(db, b, memSize, cudaMemcpyHostToDevice);
+    timer.offTimer(2);
 
     // Kernel call
+    timer.onTimer(1);
     vecAdd <<< 1, NUM_DATA >>> (da, db, dc);
+    cudaDeviceSynchronize();
+    timer.offTimer(1);
 
     // Copy results: Device -> Host
+    timer.onTimer(3);
     cudaMemcpy(c, dc, memSize, cudaMemcpyHostToDevice);
+    timer.onTimer(3);
+
+    timer.offTimer(0);
 
     // Release device memory
     cudaFree(da); cudaFree(db); cudaFree(dc);
 
+    timer.printTimer();
+    
     // Check results
     bool result = true;
     for (int i = 0; i < NUM_DATA; i++)
