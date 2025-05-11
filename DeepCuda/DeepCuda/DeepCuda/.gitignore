@@ -8,7 +8,6 @@
 *.ptx
 *.cubin
 *.fatbin
-*.vsidx
 *.suo
 *.log
 *.tlog
